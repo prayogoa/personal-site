@@ -1,193 +1,353 @@
-import * as React from "react"
-import type { HeadFC, PageProps } from "gatsby"
+import * as React from "react";
+import type { HeadFC, PageProps } from "gatsby";
+import {
+  Heading,
+  HStack,
+  ListItem,
+  Text,
+  Image,
+  Code,
+  CodeProps,
+  Divider,
+  Avatar,
+  VStack,
+  Card,
+  CardHeader,
+  CardBody,
+  UnorderedList,
+  Grid,
+  GridItem,
+  Link,
+  List,
+} from "@chakra-ui/react";
+import gravatar from "../utils/gravatar";
+import RfLogo from "../images/rainforestqa_logo.jpeg";
+import CollapsibleCardBody from "../components/CollapsibleCardBody";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import {
+  faMobile,
+  faPhone,
+  faSquareEnvelope,
+} from "@fortawesome/free-solid-svg-icons";
+const PurpleCode = (props: CodeProps) => (
+  <Code colorScheme="purple" {...props} />
+);
 
-const pageStyles = {
-  color: "#232129",
-  padding: 96,
-  fontFamily: "-apple-system, Roboto, sans-serif, serif",
-}
-const headingStyles = {
-  marginTop: 0,
-  marginBottom: 64,
-  maxWidth: 320,
-}
-const headingAccentStyles = {
-  color: "#663399",
-}
-const paragraphStyles = {
-  marginBottom: 48,
-}
-const codeStyles = {
-  color: "#8A6534",
-  padding: 4,
-  backgroundColor: "#FFF4DB",
-  fontSize: "1.25rem",
-  borderRadius: 4,
-}
-const listStyles = {
-  marginBottom: 96,
-  paddingLeft: 0,
-}
-const doclistStyles = {
-  paddingLeft: 0,
-}
-const listItemStyles = {
-  fontWeight: 300,
-  fontSize: 24,
-  maxWidth: 560,
-  marginBottom: 30,
-}
-
-const linkStyle = {
-  color: "#8954A8",
-  fontWeight: "bold",
-  fontSize: 16,
-  verticalAlign: "5%",
-}
-
-const docLinkStyle = {
-  ...linkStyle,
-  listStyleType: "none",
-  display: `inline-block`,
-  marginBottom: 24,
-  marginRight: 12,
-}
-
-const descriptionStyle = {
-  color: "#232129",
-  fontSize: 14,
-  marginTop: 10,
-  marginBottom: 0,
-  lineHeight: 1.25,
-}
-
-const docLinks = [
-  {
-    text: "TypeScript Documentation",
-    url: "https://www.gatsbyjs.com/docs/how-to/custom-configuration/typescript/",
-    color: "#8954A8",
-  },
-  {
-    text: "GraphQL Typegen Documentation",
-    url: "https://www.gatsbyjs.com/docs/how-to/local-development/graphql-typegen/",
-    color: "#8954A8",
-  }
-]
-
-const badgeStyle = {
-  color: "#fff",
-  backgroundColor: "#088413",
-  border: "1px solid #088413",
-  fontSize: 11,
-  fontWeight: "bold",
-  letterSpacing: 1,
-  borderRadius: 4,
-  padding: "4px 6px",
-  display: "inline-block",
-  position: "relative" as "relative",
-  top: -2,
-  marginLeft: 10,
-  lineHeight: 1,
-}
-
-const links = [
-  {
-    text: "Tutorial",
-    url: "https://www.gatsbyjs.com/docs/tutorial/getting-started/",
-    description:
-      "A great place to get started if you're new to web development. Designed to guide you through setting up your first Gatsby site.",
-    color: "#E95800",
-  },
-  {
-    text: "How to Guides",
-    url: "https://www.gatsbyjs.com/docs/how-to/",
-    description:
-      "Practical step-by-step guides to help you achieve a specific goal. Most useful when you're trying to get something done.",
-    color: "#1099A8",
-  },
-  {
-    text: "Reference Guides",
-    url: "https://www.gatsbyjs.com/docs/reference/",
-    description:
-      "Nitty-gritty technical descriptions of how Gatsby works. Most useful when you need detailed information about Gatsby's APIs.",
-    color: "#BC027F",
-  },
-  {
-    text: "Conceptual Guides",
-    url: "https://www.gatsbyjs.com/docs/conceptual/",
-    description:
-      "Big-picture explanations of higher-level Gatsby concepts. Most useful for building understanding of a particular topic.",
-    color: "#0D96F2",
-  },
-  {
-    text: "Plugin Library",
-    url: "https://www.gatsbyjs.com/plugins",
-    description:
-      "Add functionality and customize your Gatsby site or app with thousands of plugins built by our amazing developer community.",
-    color: "#8EB814",
-  },
-  {
-    text: "Build and Host",
-    url: "https://www.gatsbyjs.com/cloud",
-    badge: true,
-    description:
-      "Now you’re ready to show the world! Give your Gatsby site superpowers: Build and host on Gatsby Cloud. Get started for free!",
-    color: "#663399",
-  },
-]
-
+const templateAreas = {
+  base: `"header"
+       "experience"
+       "education"
+       "award"
+       "contact"`,
+  md: `"header     header"
+       "experience education"
+       ". award"
+       ". contact"`,
+};
+const templateColumns = {
+  base: "1fr",
+  md: "fit-content(60ch) fit-content(100%)",
+};
 const IndexPage: React.FC<PageProps> = () => {
   return (
-    <main style={pageStyles}>
-      <h1 style={headingStyles}>
-        Congratulations
-        <br />
-        <span style={headingAccentStyles}>— you just made a Gatsby site! 🎉🎉🎉</span>
-      </h1>
-      <p style={paragraphStyles}>
-        Edit <code style={codeStyles}>src/pages/index.tsx</code> to see this page
-        update in real-time. 😎
-      </p>
-      <ul style={doclistStyles}>
-        {docLinks.map(doc => (
-          <li key={doc.url} style={docLinkStyle}>
-            <a
-              style={linkStyle}
-              href={`${doc.url}?utm_source=starter&utm_medium=ts-docs&utm_campaign=minimal-starter-ts`}
-            >
-              {doc.text}
-            </a>
-          </li>
-        ))}
-      </ul>
-      <ul style={listStyles}>
-        {links.map(link => (
-          <li key={link.url} style={{ ...listItemStyles, color: link.color }}>
-            <span>
-              <a
-                style={linkStyle}
-                href={`${link.url}?utm_source=starter&utm_medium=start-page&utm_campaign=minimal-starter-ts`}
-              >
-                {link.text}
-              </a>
-              {link.badge && (
-                <span style={badgeStyle} aria-label="New Badge">
-                  NEW!
-                </span>
-              )}
-              <p style={descriptionStyle}>{link.description}</p>
-            </span>
-          </li>
-        ))}
-      </ul>
-      <img
-        alt="Gatsby G Logo"
-        src="data:image/svg+xml,%3Csvg width='24' height='24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 2a10 10 0 110 20 10 10 0 010-20zm0 2c-3.73 0-6.86 2.55-7.75 6L14 19.75c3.45-.89 6-4.02 6-7.75h-5.25v1.5h3.45a6.37 6.37 0 01-3.89 4.44L6.06 9.69C7 7.31 9.3 5.63 12 5.63c2.13 0 4 1.04 5.18 2.65l1.23-1.06A7.959 7.959 0 0012 4zm-8 8a8 8 0 008 8c.04 0 .09 0-8-8z' fill='%23639'/%3E%3C/svg%3E"
-      />
-    </main>
-  )
-}
+    <Grid
+      as="main"
+      templateAreas={templateAreas}
+      templateColumns={templateColumns}
+      gap={3}
+      width="fit-content"
+      m="auto"
+      p={4}
+    >
+      <GridItem area="header">
+        <HStack m="auto">
+          <Avatar
+            name="Adrian Prayogo"
+            size="xl"
+            src={gravatar("adr010590@gmail.com", 100)}
+          />
+          <VStack align="flex-start">
+            <Heading as="h1" size="3xl">
+              Adrian Prayogo
+            </Heading>
+            <Text size="sm">
+              Experienced software engineer and team lead with a strong
+              background in frontend development
+            </Text>
+          </VStack>
+        </HStack>
+        <Divider my={4} />
+      </GridItem>
+      <GridItem area="experience" rowSpan={{ md: 4 }}>
+        <VStack align="flex-start" alignItems="stretch">
+          <Heading as="h2" size="lg">
+            Experience
+          </Heading>
+          <Card>
+            <CardHeader>
+              <HStack>
+                <Image src={RfLogo} borderRadius="full" boxSize={10} />
+                <VStack align="flex-start" gap={1}>
+                  <Heading as="h3" size="md">
+                    <Link isExternal href="https://www.rainforestqa.com">
+                      Rainforest QA
+                    </Link>
+                  </Heading>
+                  <Text>Remote</Text>
+                </VStack>
+              </HStack>
+            </CardHeader>
+            <CollapsibleCardBody numCollapsedLines={15}>
+              <Heading as="h4" size="sm">
+                Senior Engineering Manager
+              </Heading>
+              <Text fontSize="xs">Oct 2017 - Present</Text>
+              <Heading as="h4" size="sm" mt={1}>
+                Engineering Manager
+              </Heading>
+              <Text fontSize="xs">Mar 2017 - Oct 2017</Text>
+              <Text mt={1}>
+                Lead the frontend team at Rainforest QA, responsible for the
+                single page application used by customers to interact with the
+                product (test authoring / organization, result review, account
+                management). This included:
+              </Text>
+              <UnorderedList>
+                <ListItem>
+                  Advising team members in planning and implementation of all
+                  frontend projects
+                </ListItem>
+                <ListItem>
+                  Coaching and mentoring on communication, collaboration,
+                  planning and estimation, etc.
+                </ListItem>
+                <ListItem>Conducting performance reviews</ListItem>
+                <ListItem>Reviewing code</ListItem>
+                <ListItem>
+                  Collaborating with product managers to plan out future feature
+                  work
+                </ListItem>
+                <ListItem>
+                  Facilitating constant discussions within the team to improve
+                  processes and conventions
+                </ListItem>
+                <ListItem>Hiring new team members</ListItem>
+              </UnorderedList>
+              <Text>
+                In this role I still make contributions to the codebase
+                regularly, acting as a flexible additional manpower to be
+                deployed on ongoing projects as needed.
+              </Text>
+              <Divider my={2} />
+              <Heading as="h4" size="sm">
+                Senior Frontend Engineer
+              </Heading>
+              <Text fontSize="xs">Jul 2015 - Mar 2017</Text>
+              <Text>
+                Second frontend hire of a fully remote, globally distributed,
+                small engineering team. Responsible for the development and
+                maintenance of the web app used by customers to author and run
+                tests and review results, as well as the web interface testers
+                used to execute tests. This included:
+              </Text>
+              <UnorderedList>
+                <ListItem>Migrating from Backbone.js to React, Redux</ListItem>
+                <ListItem>
+                  Migrating unit testing framework from Jasmine to Jest
+                </ListItem>
+                <ListItem>
+                  Setting up instrumentation and analytics integration (Segment)
+                </ListItem>
+                <ListItem>
+                  Adding crash reporting integration (Sentry) and conducting bug
+                  triage
+                </ListItem>
+                <ListItem>Configuring CI / CD pipeline (Circle CI)</ListItem>
+              </UnorderedList>
+              <Text>
+                Initially the engineering team also carried out product
+                management and design responsibilities. As we hired dedicated
+                product managers and designers, I worked closely with them in
+                coming up with solutions to user problems, providing estimates
+                and suggestions on how it can better solve the problem or be
+                shipped faster.
+              </Text>
+            </CollapsibleCardBody>
+          </Card>
+          <Card>
+            <CardHeader>
+              <Heading as="h3" size="md">
+                <Link href="https://innovationpartnerships.umich.edu/company/collabrify-it/">
+                  Collabrify.IT
+                </Link>
+              </Heading>
+              <Text>Ann Arbor, Michigan</Text>
+            </CardHeader>
+            <CollapsibleCardBody numCollapsedLines={15} maxW="60ch">
+              <Heading as="h4" size="sm">
+                Co-founder, Lead Software Engineer
+              </Heading>
+              <Text fontSize="xs">2013-2015</Text>
+              <UnorderedList>
+                <ListItem>
+                  Lead a team of engineers in the design, implementation, and
+                  maintenance of Collabrify client libraries for iOS and
+                  Javascript
+                </ListItem>
+                <ListItem>
+                  Held talks in developer meetups to demonstrate and promote the
+                  usage of the Collabrify client library
+                </ListItem>
+                <ListItem>
+                  Wrote documentation, developer guide, and sample applications
+                  to showcase the capabilities of the Collabrify platform, also
+                  to be used in developer tutorials
+                </ListItem>
+                <ListItem>
+                  Designed and built Collabrify Cobrowse, a cloud based
+                  no-install web application that synchronizes browser state and
+                  content in real time over the Internet to allow users to
+                  browse the web together
+                </ListItem>
+              </UnorderedList>
+            </CollapsibleCardBody>
+          </Card>
+          <Card>
+            <CardHeader>
+              <Heading as="h3" size="md">
+                <Link href="https://www.imlc.io/">
+                  Intergalactic Mobile Learning Center (University of Michigan)
+                </Link>
+              </Heading>
+              <Text>Ann Arbor, Michigan</Text>
+            </CardHeader>
+            <CollapsibleCardBody numCollapsedLines={15} maxW="60ch">
+              <Heading as="h4" size="sm">
+                Lead Software Engineer
+              </Heading>
+              <Text fontSize="xs">2011-2013</Text>
+              <Text>
+                Lead software engineer of a team studying improvements on early
+                learning efficiency through collaborative apps
+              </Text>
+              <UnorderedList>
+                <ListItem>
+                  Built Collabrify - a platform that enables applications to
+                  synchronize data in real time, runs on AWS
+                </ListItem>
+                <ListItem>
+                  Co-designed the next iteration of the Collabrify platform to
+                  run in Google App Engine, improving its scalability and
+                  reliability
+                </ListItem>
+                <ListItem>
+                  Designed and built the Collabrify client library for Android
+                  to broadcast and listen to data change events
+                </ListItem>
+                <ListItem>
+                  Created WeMap and WeSketch, a concept mapping and
+                  drawing/animation tool on Android, with real-time
+                  collaboration
+                </ListItem>
+                <ListItem>
+                  Lead a group of students in creating a suite of real-time
+                  collaborative mobile applications to be used in schools as
+                  well as a Learning Management System to synchronize and back
+                  up student files
+                </ListItem>
+                <ListItem>
+                  Maintained MyDesk, a suite of educational mobile applications
+                  for Windows Phone used in Nan Chiau Primary School, Singapore
+                </ListItem>
+              </UnorderedList>
+            </CollapsibleCardBody>
+          </Card>
+        </VStack>
+      </GridItem>
+      <GridItem area="education">
+        <VStack align="flex-start" alignItems="stretch">
+          <Heading as="h2" size="lg">
+            Education
+          </Heading>
+          <Card size="sm">
+            <CardBody>
+              <Heading as="h3" size="sm">
+                University of Michigan
+              </Heading>
+              <Text fontSize="xs">Ann Arbor, Michigan</Text>
+              <Text>M.S.E Computer Science and Engineering</Text>
+              <Text fontSize="xs">2013</Text>
+              <Text fontSize="xs">GPA: 7.00/8.00</Text>
+              <Divider my={4} />
+              <Heading as="h3" size="sm" mt={1}>
+                University of Michigan
+              </Heading>
+              <Text fontSize="xs">Ann Arbor, Michigan</Text>
+              <Text>B.S.E. Computer Science and Engineering</Text>
+              <Text fontSize="xs">2011</Text>
+              <Text fontSize="xs">GPA: 3.55/4.00</Text>
+            </CardBody>
+          </Card>
+        </VStack>
+      </GridItem>
+      <GridItem area="award">
+        <VStack align="flex-start" alignItems="stretch">
+          <Heading as="h2" size="lg">
+            Awards
+          </Heading>
+          <Card size="sm">
+            <CardBody>
+              <Heading as="h3" size="sm">
+                Magna Cum Laude
+              </Heading>
+              <Text>University of Michigan</Text>
+              <Text fontSize="xs">2011</Text>
+            </CardBody>
+          </Card>
+        </VStack>
+      </GridItem>
+      <GridItem area="contact">
+        <VStack alignItems="stretch">
+          <Card>
+            <CardBody>
+              <List>
+                <ListItem>
+                  <Link isExternal href="https://linkedin.com/in/prayogoa">
+                    <FontAwesomeIcon icon={faLinkedin} /> prayogoa
+                  </Link>
+                </ListItem>
+                <ListItem>
+                  <Link isExternal href="https://github.com/prayogoa">
+                    <FontAwesomeIcon icon={faGithub} /> @prayogoa
+                  </Link>
+                </ListItem>
+                <ListItem>
+                  <Link href="tel:+6587985759">
+                    <FontAwesomeIcon icon={faPhone} /> +65 8798 5759
+                  </Link>
+                </ListItem>
+                <ListItem>
+                  <Link href="mailto:prayogoadrian@gmail.com">
+                    <FontAwesomeIcon icon={faSquareEnvelope} />{" "}
+                    prayogoadrian@gmail.com
+                  </Link>
+                </ListItem>
+              </List>
+            </CardBody>
+          </Card>
+        </VStack>
+      </GridItem>
+    </Grid>
+  );
+};
 
-export default IndexPage
+export default IndexPage;
 
-export const Head: HeadFC = () => <title>Home Page</title>
+export const Head: HeadFC = () => (
+  <>
+    <html data-theme="dark" />
+    <title>Home Page</title>
+    <body className="chakra-ui-dark" />
+  </>
+);

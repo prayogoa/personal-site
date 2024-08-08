@@ -13,14 +13,29 @@
     "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "typecheck": "tsc --noEmit"
+    "theme": "chakra-cli tokens src/theme/index.ts",
+    "theme:watch": "chakra-cli tokens src/theme/index.ts --watch",
+    "typecheck": "tsc --noEmit",
+    "postinstall": "npm run theme"
   },
   "dependencies": {
+    "@chakra-ui/react": "2.8.2",
+    "@emotion/react": "11.13.0",
+    "@emotion/styled": "11.13.0",
+    "@fortawesome/fontawesome-svg-core": "6.6.0",
+    "@fortawesome/free-brands-svg-icons": "6.6.0",
+    "@fortawesome/free-regular-svg-icons": "6.6.0",
+    "@fortawesome/free-solid-svg-icons": "6.6.0",
+    "@fortawesome/react-fontawesome": "0.2.2",
+    "framer-motion": "11.3.22",
     "gatsby": "^5.13.5",
+    "md5-hex": "5.0.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "use-resize-observer": "9.1.0"
   },
   "devDependencies": {
+    "@chakra-ui/cli": "2.4.1",
     "@types/node": "^20.11.19",
     "@types/react": "^18.2.55",
     "@types/react-dom": "^18.2.19",
