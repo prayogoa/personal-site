@@ -347,7 +347,7 @@ export default IndexPage;
 export const Head: HeadFC = () => (
   <>
     <html data-theme="dark" />
-    <title>Home Page</title>
+    <title>Adrian Prayogo</title>
     <body className="chakra-ui-dark" />
   </>
 );
