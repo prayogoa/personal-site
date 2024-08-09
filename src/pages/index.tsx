@@ -98,7 +98,7 @@ const IndexPage: React.FC<PageProps> = () => {
                 </VStack>
               </HStack>
             </CardHeader>
-            <CollapsibleCardBody numCollapsedLines={15}>
+            <CardBody>
               <Heading as="h4" size="sm">
                 Senior Engineering Manager
               </Heading>
@@ -173,7 +173,7 @@ const IndexPage: React.FC<PageProps> = () => {
                 and suggestions on how it can better solve the problem or be
                 shipped faster.
               </Text>
-            </CollapsibleCardBody>
+            </CardBody>
           </Card>
           <Card>
             <CardHeader>
