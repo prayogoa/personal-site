@@ -102,7 +102,52 @@ const IndexPage: React.FC<PageProps> = () => {
               <Heading as="h4" size="sm">
                 Senior Engineering Manager
               </Heading>
-              <Text fontSize="xs">Oct 2017 - Present</Text>
+              <Text fontSize="xs">Oct 2017 - Aug 2024</Text>
+              <Text mt={1}>
+                Continued leading and managing the Frontend team.
+              </Text>
+              <Text my={2}>
+                During this time the company shifted focus from using a crowd of
+                human testers to execute tests on customer websites, to offering
+                a proprietary no-code automation testing tool based on the
+                visual appearance of the website.
+              </Text>
+              <Text>
+                One of the major projects I worked with my team was to build a
+                new no-code, block based visual test editor. Some of the editor
+                features we implemented:
+              </Text>
+              <UnorderedList>
+                <ListItem>
+                  Test previewing: executing the test instructions in a virtual
+                  machine while the user watches it through a vnc client
+                  embedded in the editor
+                </ListItem>
+                <ListItem>Drag and drop reordering of steps</ListItem>
+                <ListItem>
+                  Taking screenshots to use in test instructions
+                </ListItem>
+                <ListItem>
+                  Creating reusable set of instructions to be used in multiple
+                  tests
+                </ListItem>
+                <ListItem>
+                  Templating test data to be used in test instructions
+                </ListItem>
+                <ListItem>
+                  Fallback match modes, using dom selectors in case a screenshot
+                  match failed. We added the ability to suggest dom selectors
+                  based on the screenshot taken
+                </ListItem>
+              </UnorderedList>
+              <Text mt={2}>
+                I was also responsible for supporting the business model
+                transition from contracts based customers to pay-as-you-go self
+                serve, building a registration flow. As part of this project I
+                also worked with backend engineers to design the subscription
+                lifecycle and billing related pages.
+              </Text>
+              <Divider my={2} />
               <Heading as="h4" size="sm" mt={1}>
                 Engineering Manager
               </Heading>
