@@ -1,10 +1,4 @@
-import {
-  Box,
-  Button,
-  CardBody,
-  CardBodyProps,
-  LayoutProps,
-} from "@chakra-ui/react";
+import { Box, Button, CardBody, CardBodyProps } from "@chakra-ui/react";
 import * as React from "react";
 import useResizeObserver from "use-resize-observer";
 
@@ -16,6 +10,8 @@ const CollapsibleCardBody = ({
   numCollapsedLines,
   ...rest
 }: CollapsibleCardBodyProps) => {
+  const [isCollapsed, setIsCollapsed] = React.useState<boolean>(true);
+  const [isOverflowing, setIsOverflowing] = React.useState<boolean>(false);
   const ref = React.useRef<HTMLDivElement>(null);
   useResizeObserver({
     ref,
@@ -28,8 +24,6 @@ const CollapsibleCardBody = ({
       }
     },
   });
-  const [isCollapsed, setIsCollapsed] = React.useState<boolean>(true);
-  const [isOverflowing, setIsOverflowing] = React.useState<boolean>(false);
   return (
     <CardBody {...rest}>
       <Box
