@@ -71,7 +71,7 @@ const IndexPage: React.FC<PageProps> = () => {
             <Heading as="h1" size="3xl">
               Adrian Prayogo
             </Heading>
-            <Text size="sm">
+            <Text size="sm" maxW={{ md: "container.md" }}>
               Experienced software engineer and engineering leader with 9+ years
               in frontend development and team management at a SaaS company.
               Seeking opportunities to drive impactful engineering initiatives
