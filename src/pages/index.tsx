@@ -72,8 +72,10 @@ const IndexPage: React.FC<PageProps> = () => {
               Adrian Prayogo
             </Heading>
             <Text size="sm">
-              Experienced software engineer and team lead with a strong
-              background in frontend development
+              Experienced software engineer and engineering leader with 9+ years
+              in frontend development and team management at a SaaS company.
+              Seeking opportunities to drive impactful engineering initiatives
+              in leadership or individual contributor roles.
             </Text>
           </VStack>
         </HStack>
@@ -100,7 +102,7 @@ const IndexPage: React.FC<PageProps> = () => {
             </CardHeader>
             <CardBody>
               <Heading as="h4" size="sm">
-                Senior Engineering Manager
+                Senior Lead Software Engineer
               </Heading>
               <Text fontSize="xs">Oct 2017 - Aug 2024</Text>
               <Text mt={1}>
@@ -149,7 +151,7 @@ const IndexPage: React.FC<PageProps> = () => {
               </Text>
               <Divider my={2} />
               <Heading as="h4" size="sm" mt={1}>
-                Engineering Manager
+                Lead Software Engineer
               </Heading>
               <Text fontSize="xs">Mar 2017 - Oct 2017</Text>
               <Text mt={1}>
