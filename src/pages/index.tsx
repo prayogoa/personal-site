@@ -5,9 +5,6 @@ import {
   HStack,
   ListItem,
   Text,
-  Image,
-  Code,
-  CodeProps,
   Divider,
   Avatar,
   VStack,
@@ -105,7 +102,7 @@ const IndexPage: React.FC<PageProps> = () => {
             interfaces and driving impactful engineering initiatives.
           </Heading>
           <Text>
-            I spent the last 9 years at{" "}
+            Since 2015 I've worked at{" "}
             <Link isExternal href="https://www.rainforestqa.com">
               Rainforest QA
             </Link>
