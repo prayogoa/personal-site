@@ -7,6 +7,6 @@ export const WrapRootElement = ({
 }: Pick<WrapRootElementBrowserArgs, "element">) => (
   // Or ChakraBaseProvider if you only want to compile the default Chakra theme tokens
   <ChakraProvider resetCSS theme={customTheme}>
-    <DarkMode>{element}</DarkMode>
+    {element}
   </ChakraProvider>
 );
